@@ -1,0 +1,79 @@
+#Derived binaries
+target
+test-output
+[Bb]in
+[Bb]uild
+*.[ao]
+*.log
+*.exe
+*.out
+*.dll
+*.dylib
+*.dynlib
+*.iml
+
+# IDE project files etc
+.classpath
+.project
+.settings
+.idea
+out
+gradle
+gradlew
+.gradle
+.gwt
+.metadata
+.factorypath
+
+# Various editors tmp files
+# Do not include '.*' here; would disable .gitignore itself
+.#*
+.~*
+*~
+\#*
+~$*
+
+# User local settings
+environment.local.properties
+
+#Temps and old ones and backups
+*.versionsBackup
+*.tmp
+*.bac
+*.bak
+*.temp
+tmp
+x.x*
+#Just to be on the safe side
+.svn
+
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.tar
+
+# OS specifics
+*.DS_Stor*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+[Tt]humbs.db
+
+#vim swap files:
+.*\.swp
+.gradle/
+build.gradle
+gradle/
+gradlew.bat
+indexer/
+models/
+out/
+settings.gradle
+src/
