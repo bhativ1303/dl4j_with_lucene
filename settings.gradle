@@ -1,0 +1,4 @@
+rootProject.name = 'dl4j-with-lucene'
+include 'indexer'
+include 'models'
+
