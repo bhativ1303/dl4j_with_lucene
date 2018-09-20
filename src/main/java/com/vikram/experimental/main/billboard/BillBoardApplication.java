@@ -1,8 +1,6 @@
 package com.vikram.experimental.main.billboard;
 
-import com.vikram.experimental.lucene.indexer.BillBoardIndexWriterImpl;
-import com.vikram.experimental.main.reader.CsvReaderImpl;
-import com.vikram.experimental.models.MusicItem;
+import com.vikram.experimental.main.utils.Reader;
 
 import java.util.List;
 
@@ -15,14 +13,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BillBoardApplication {
 
-    private static String FILE_PATH = "/files/billboard_lyrics_1964-2015.csv";
-    private static final String INDEX_DIR = "sdf";
 
     public static void main(String[] args) {
-        CsvReaderImpl reader = new CsvReaderImpl();
         try {
-            List<MusicItem> items = reader.read(FILE_PATH, MusicItem.class);
-            BillBoardIndexWriterImpl indexWriter = new BillBoardIndexWriterImpl(INDEX_DIR);
+            List<MusicItem> items = Reader.readCsvToBean(Constants.FILE_PATH, MusicItem.class);
+            BillBoardIndexWriter indexWriter = new BillBoardIndexWriter(Constants.INDEX_DIR);
             indexWriter.write(items);
 
         } catch (Exception e) {

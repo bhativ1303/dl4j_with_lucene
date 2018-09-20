@@ -1,8 +1,6 @@
-package com.vikram.experimental.lucene.indexer;
+package com.vikram.experimental.main.billboard;
 
-import com.vikram.experimental.models.MusicItem;
-
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.StringField;
@@ -16,21 +14,21 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import lombok.RequiredArgsConstructor;
-
 /**
  * @author Vikram Singh
  * Date: 8/12/2018
  */
-@RequiredArgsConstructor
-public class BillBoardIndexWriterImpl implements BillBoardIndexWriter {
+class BillBoardIndexWriter {
 
-    private final String indexDirectory;
+    private final IndexWriter writer;
 
-    @Override
-    public void write(List<MusicItem> items) throws IOException {
-        IndexWriter writer = createWriter();
-        //Let's clean everything first
+    BillBoardIndexWriter(Analyzer analyzer) throws IOException {
+        FSDirectory dir = FSDirectory.open(Paths.get(Constants.INDEX_DIR));
+        IndexWriterConfig config = new IndexWriterConfig(analyzer);
+        this.writer = new IndexWriter(dir, config);
+    }
+
+    void write(List<MusicItem> items) throws IOException {
         writer.deleteAll();
 
         List<Document> documents = items.stream()
@@ -39,12 +37,6 @@ public class BillBoardIndexWriterImpl implements BillBoardIndexWriter {
         writer.addDocuments(documents);
         writer.commit();
         writer.close();
-    }
-
-    private IndexWriter createWriter() throws IOException {
-        FSDirectory dir = FSDirectory.open(Paths.get(indexDirectory));
-        IndexWriterConfig config = new IndexWriterConfig(new StandardAnalyzer());
-        return new IndexWriter(dir, config);
     }
 
     private Document createDocument(MusicItem item) {

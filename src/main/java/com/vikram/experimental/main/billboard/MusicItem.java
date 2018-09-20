@@ -1,4 +1,4 @@
-package com.vikram.experimental.models;
+package com.vikram.experimental.main.billboard;
 
 import com.opencsv.bean.CsvBindByName;
 
