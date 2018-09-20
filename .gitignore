@@ -17,10 +17,6 @@ test-output
 .project
 .settings
 .idea
-out
-gradle
-gradlew
-.gradle
 .gwt
 .metadata
 .factorypath
@@ -69,11 +65,7 @@ ehthumbs.db
 #vim swap files:
 .*\.swp
 .gradle/
-build.gradle
 gradle/
 gradlew.bat
-indexer/
-models/
 out/
-settings.gradle
-src/
+gradlew
