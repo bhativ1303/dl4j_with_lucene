@@ -1,4 +1,4 @@
-package com.vikram.experimental.main.billboard;
+package com.vikram.experimental.main.billboard.luc;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
@@ -18,17 +18,17 @@ import java.util.stream.Collectors;
  * @author Vikram Singh
  * Date: 8/12/2018
  */
-class BillBoardIndexWriter {
+public class BillBoardIndexWriter {
 
     private final IndexWriter writer;
 
-    BillBoardIndexWriter(Analyzer analyzer) throws IOException {
+    public BillBoardIndexWriter(Analyzer analyzer) throws IOException {
         FSDirectory dir = FSDirectory.open(Paths.get(Constants.INDEX_DIR));
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
         this.writer = new IndexWriter(dir, config);
     }
 
-    void write(List<MusicItem> items) throws IOException {
+    public void write(List<MusicItem> items) throws IOException {
         writer.deleteAll();
 
         List<Document> documents = items.stream()

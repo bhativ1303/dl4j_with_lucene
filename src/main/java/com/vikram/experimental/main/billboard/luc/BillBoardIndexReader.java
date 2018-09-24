@@ -1,4 +1,4 @@
-package com.vikram.experimental.main.billboard;
+package com.vikram.experimental.main.billboard.luc;
 
 import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
 import org.apache.lucene.document.Document;

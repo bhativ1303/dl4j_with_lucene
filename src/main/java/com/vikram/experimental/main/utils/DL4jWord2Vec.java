@@ -1,6 +1,6 @@
 package com.vikram.experimental.main.utils;
 
-import com.vikram.experimental.main.billboard.Constants;
+import com.vikram.experimental.main.billboard.luc.Constants;
 
 import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.text.sentenceiterator.BasicLineIterator;

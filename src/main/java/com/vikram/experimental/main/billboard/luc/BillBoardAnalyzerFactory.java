@@ -1,4 +1,4 @@
-package com.vikram.experimental.main.billboard;
+package com.vikram.experimental.main.billboard.luc;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.CharArraySet;
@@ -11,13 +11,16 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * @author Vikram Singh
  * Date: 9/20/2018
  */
-public class BillBoardAnalyzer {
+@UtilityClass
+public class BillBoardAnalyzerFactory {
 
-    Analyzer makeIndexTimeAnalyzer() {
+    public Analyzer makeIndexTimeAnalyzer() {
         Map<String, Analyzer> perFieldAnalyzers = new HashMap<>();
 
         CharArraySet stopWords = new CharArraySet(Arrays.asList("a", "an", "the"), true);
@@ -27,7 +30,7 @@ public class BillBoardAnalyzer {
         return new PerFieldAnalyzerWrapper(new StandardAnalyzer(), perFieldAnalyzers);
     }
 
-    Analyzer makeSearchTimeAnalyzer() {
+    public Analyzer makeSearchTimeAnalyzer() {
         Map<String, Analyzer> perFieldAnalyzers = new HashMap<>();
 
         CharArraySet stopWords = new CharArraySet(Arrays.asList("a", "an", "the"), true);
